@@ -35,10 +35,13 @@ Theme ID | Theme Name | Link
 
 ## Roles
 
+- If you are an Administrator User You Can Browse Pages that Normal User Can't Enter
+- Add or Edit or Delete Data
+
 ### **Home with Privilege**
 
 ![Theme2_Privilege](/Screencapture/screencapture-Theme2-Privilege.png)
 
-### **Tables With Edit and Delete**
+### **Tables With Add, Edit and Delete**
 
 ![Theme2_Tables](/Screencapture/screencapture-Theme2-Tables.png)
