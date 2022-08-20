@@ -23,15 +23,15 @@ Feature ID | Feature Name | Link
 
 ![Theme2_Login](/Screencapture/screencapture-Theme2-Login.png)
 
-#### **Tables**
-
-![Theme2_Tables](/Screencapture/screencapture-Theme2-Tables.png)
-
 ### Roles
 
 #### **Home with Privilege**
 
 ![Theme2_Privilege](/Screencapture/screencapture-Theme2-Privilege.png)
+
+#### **Tables**
+
+![Theme2_Tables](/Screencapture/screencapture-Theme2-Tables.png)
 
 ### Theme 3
 
