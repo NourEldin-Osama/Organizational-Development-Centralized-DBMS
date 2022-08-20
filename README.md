@@ -36,7 +36,8 @@ Theme ID | Theme Name | Link
 ## Roles
 
 - If you are an Administrator User You Can Browse Pages that Normal User Can't Enter
-- Add or Edit or Delete Data
+- Also You Can Add or Edit or Delete Data
+- Normal User Can Only Access Certain Pages and View Data
 
 ### **Home with Privilege**
 
