@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MCITTrainingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LU_CourseProvider">
+    <Key>
+      <PropertyRef Name="CourseProvideID" />
+    </Key>
+    <Property Name="CourseProvideID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseProviderName" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="LU_EmploymentDegree">
+    <Key>
+      <PropertyRef Name="EmploymentDegreeID" />
+    </Key>
+    <Property Name="EmploymentDegreeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmploymentDegreeName" Type="nvarchar" MaxLength="500" />
+    <Property Name="EmploymentLevelID" Type="int" />
+  </EntityType>
+  <EntityType Name="LU_EmploymentLevel">
+    <Key>
+      <PropertyRef Name="EmploymentLevelID" />
+    </Key>
+    <Property Name="EmploymentLevelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmploymentName" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="LU_StudyMechanism">
+    <Key>
+      <PropertyRef Name="StudyMechanismID" />
+    </Key>
+    <Property Name="StudyMechanismID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudyMechanismName" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="LU_TrainingCourse">
+    <Key>
+      <PropertyRef Name="TrainingCourseID" />
+    </Key>
+    <Property Name="TrainingCourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrainingCourseName" Type="nvarchar" MaxLength="500" />
+    <Property Name="TrainingProgramID" Type="int" Nullable="false" />
+    <Property Name="TrainingCourseCost" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="LU_TrainingProgram">
+    <Key>
+      <PropertyRef Name="TrainingProgramID" />
+    </Key>
+    <Property Name="TrainingProgramID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrainingProgramName" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TBL_Candidates_Courses">
+    <Key>
+      <PropertyRef Name="CandID" />
+    </Key>
+    <Property Name="CandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandWorkSector" Type="nvarchar" MaxLength="500" />
+    <Property Name="CandWorkDept" Type="nvarchar" MaxLength="500" />
+    <Property Name="CandWorkTitle" Type="nvarchar" MaxLength="500" />
+    <Property Name="CandSubMinistryID" Type="int" />
+    <Property Name="CandTrainingCourse" Type="int" />
+    <Property Name="CandCourseDuration" Type="nvarchar" MaxLength="255" />
+    <Property Name="CandCourseProvider" Type="int" />
+    <Property Name="CandCourseStudyMechanism" Type="int" />
+    <Property Name="CandEmploymentDegree" Type="int" />
+    <Property Name="CandStartDate" Type="datetime" />
+    <Property Name="CandEndDate" Type="datetime" />
+    <Property Name="CandCapitalStatus" Type="bit" />
+    <Property Name="CandFiscalYearID" Type="int" />
+    <Property Name="CandInfoID" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_CandidatesInfo">
+    <Key>
+      <PropertyRef Name="CandID" />
+    </Key>
+    <Property Name="CandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CandFullName" Type="nvarchar" MaxLength="255" />
+    <Property Name="CandNationalID" Type="nvarchar" MaxLength="35" />
+    <Property Name="CandMobileNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="CandEmail" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="TBL_FiscalYear">
+    <Key>
+      <PropertyRef Name="FiscalYearID" />
+    </Key>
+    <Property Name="FiscalYearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FiscalYear" Type="nvarchar" MaxLength="9" />
+  </EntityType>
+  <EntityType Name="TBL_Ministries">
+    <Key>
+      <PropertyRef Name="MinistryID" />
+    </Key>
+    <Property Name="MinistryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MinistryName" Type="nvarchar" MaxLength="255" />
+    <Property Name="MinistryQuote" Type="int" />
+  </EntityType>
+  <EntityType Name="TBL_SubMinistry">
+    <Key>
+      <PropertyRef Name="SubMinistryID" />
+    </Key>
+    <Property Name="SubMinistryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubMinistryName" Type="nvarchar" MaxLength="255" />
+    <Property Name="MinistryID" Type="int" />
+  </EntityType>
+  <Association Name="FK_LU_EmploymentDegree_LU_EmploymentLevel">
+    <End Role="LU_EmploymentLevel" Type="Self.LU_EmploymentLevel" Multiplicity="0..1" />
+    <End Role="LU_EmploymentDegree" Type="Self.LU_EmploymentDegree" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LU_EmploymentLevel">
+        <PropertyRef Name="EmploymentLevelID" />
+      </Principal>
+      <Dependent Role="LU_EmploymentDegree">
+        <PropertyRef Name="EmploymentLevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LU_TrainingCourse_LU_TrainingProgram1">
+    <End Role="LU_TrainingProgram" Type="Self.LU_TrainingProgram" Multiplicity="1" />
+    <End Role="LU_TrainingCourse" Type="Self.LU_TrainingCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LU_TrainingProgram">
+        <PropertyRef Name="TrainingProgramID" />
+      </Principal>
+      <Dependent Role="LU_TrainingCourse">
+        <PropertyRef Name="TrainingProgramID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Candidates_LU_CourseProvider">
+    <End Role="LU_CourseProvider" Type="Self.LU_CourseProvider" Multiplicity="0..1" />
+    <End Role="TBL_Candidates_Courses" Type="Self.TBL_Candidates_Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LU_CourseProvider">
+        <PropertyRef Name="CourseProvideID" />
+      </Principal>
+      <Dependent Role="TBL_Candidates_Courses">
+        <PropertyRef Name="CandCourseProvider" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Candidates_LU_EmploymentDegree">
+    <End Role="LU_EmploymentDegree" Type="Self.LU_EmploymentDegree" Multiplicity="0..1" />
+    <End Role="TBL_Candidates_Courses" Type="Self.TBL_Candidates_Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LU_EmploymentDegree">
+        <PropertyRef Name="EmploymentDegreeID" />
+      </Principal>
+      <Dependent Role="TBL_Candidates_Courses">
+        <PropertyRef Name="CandEmploymentDegree" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Candidates_LU_StudyMechanism">
+    <End Role="LU_StudyMechanism" Type="Self.LU_StudyMechanism" Multiplicity="0..1" />
+    <End Role="TBL_Candidates_Courses" Type="Self.TBL_Candidates_Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LU_StudyMechanism">
+        <PropertyRef Name="StudyMechanismID" />
+      </Principal>
+      <Dependent Role="TBL_Candidates_Courses">
+        <PropertyRef Name="CandCourseStudyMechanism" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Candidates_LU_TrainingCourse">
+    <End Role="LU_TrainingCourse" Type="Self.LU_TrainingCourse" Multiplicity="0..1" />
+    <End Role="TBL_Candidates_Courses" Type="Self.TBL_Candidates_Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LU_TrainingCourse">
+        <PropertyRef Name="TrainingCourseID" />
+      </Principal>
+      <Dependent Role="TBL_Candidates_Courses">
+        <PropertyRef Name="CandTrainingCourse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Candidates_Ministries_TBL_CandidatesInfo">
+    <End Role="TBL_CandidatesInfo" Type="Self.TBL_CandidatesInfo" Multiplicity="0..1" />
+    <End Role="TBL_Candidates_Courses" Type="Self.TBL_Candidates_Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_CandidatesInfo">
+        <PropertyRef Name="CandID" />
+      </Principal>
+      <Dependent Role="TBL_Candidates_Courses">
+        <PropertyRef Name="CandInfoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Candidates_Ministries_TBL_SubMinistry">
+    <End Role="TBL_SubMinistry" Type="Self.TBL_SubMinistry" Multiplicity="0..1" />
+    <End Role="TBL_Candidates_Courses" Type="Self.TBL_Candidates_Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_SubMinistry">
+        <PropertyRef Name="SubMinistryID" />
+      </Principal>
+      <Dependent Role="TBL_Candidates_Courses">
+        <PropertyRef Name="CandSubMinistryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_Candidates_TBL_FiscalYear">
+    <End Role="TBL_FiscalYear" Type="Self.TBL_FiscalYear" Multiplicity="0..1" />
+    <End Role="TBL_Candidates_Courses" Type="Self.TBL_Candidates_Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_FiscalYear">
+        <PropertyRef Name="FiscalYearID" />
+      </Principal>
+      <Dependent Role="TBL_Candidates_Courses">
+        <PropertyRef Name="CandFiscalYearID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBL_SubMinistry_TBL_Ministries">
+    <End Role="TBL_Ministries" Type="Self.TBL_Ministries" Multiplicity="0..1" />
+    <End Role="TBL_SubMinistry" Type="Self.TBL_SubMinistry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBL_Ministries">
+        <PropertyRef Name="MinistryID" />
+      </Principal>
+      <Dependent Role="TBL_SubMinistry">
+        <PropertyRef Name="MinistryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="numberOfCandidatePerSubMinstriy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spCandNumPerCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spCandNumPerMinistry_SubMinistry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spCandNumPerProgram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spCandPerFiscalYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spCanNumPerLevel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spCanNumPerMechanism" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spCanNumPerMinis" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spCanNumPerProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spCourseNumPerProvider" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="MCITTrainingDBModelStoreContainer">
+    <EntitySet Name="LU_CourseProvider" EntityType="Self.LU_CourseProvider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LU_EmploymentDegree" EntityType="Self.LU_EmploymentDegree" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LU_EmploymentLevel" EntityType="Self.LU_EmploymentLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LU_StudyMechanism" EntityType="Self.LU_StudyMechanism" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LU_TrainingCourse" EntityType="Self.LU_TrainingCourse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LU_TrainingProgram" EntityType="Self.LU_TrainingProgram" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Candidates_Courses" EntityType="Self.TBL_Candidates_Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_CandidatesInfo" EntityType="Self.TBL_CandidatesInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_FiscalYear" EntityType="Self.TBL_FiscalYear" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_Ministries" EntityType="Self.TBL_Ministries" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_SubMinistry" EntityType="Self.TBL_SubMinistry" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_LU_EmploymentDegree_LU_EmploymentLevel" Association="Self.FK_LU_EmploymentDegree_LU_EmploymentLevel">
+      <End Role="LU_EmploymentLevel" EntitySet="LU_EmploymentLevel" />
+      <End Role="LU_EmploymentDegree" EntitySet="LU_EmploymentDegree" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LU_TrainingCourse_LU_TrainingProgram1" Association="Self.FK_LU_TrainingCourse_LU_TrainingProgram1">
+      <End Role="LU_TrainingProgram" EntitySet="LU_TrainingProgram" />
+      <End Role="LU_TrainingCourse" EntitySet="LU_TrainingCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Candidates_LU_CourseProvider" Association="Self.FK_TBL_Candidates_LU_CourseProvider">
+      <End Role="LU_CourseProvider" EntitySet="LU_CourseProvider" />
+      <End Role="TBL_Candidates_Courses" EntitySet="TBL_Candidates_Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Candidates_LU_EmploymentDegree" Association="Self.FK_TBL_Candidates_LU_EmploymentDegree">
+      <End Role="LU_EmploymentDegree" EntitySet="LU_EmploymentDegree" />
+      <End Role="TBL_Candidates_Courses" EntitySet="TBL_Candidates_Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Candidates_LU_StudyMechanism" Association="Self.FK_TBL_Candidates_LU_StudyMechanism">
+      <End Role="LU_StudyMechanism" EntitySet="LU_StudyMechanism" />
+      <End Role="TBL_Candidates_Courses" EntitySet="TBL_Candidates_Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Candidates_LU_TrainingCourse" Association="Self.FK_TBL_Candidates_LU_TrainingCourse">
+      <End Role="LU_TrainingCourse" EntitySet="LU_TrainingCourse" />
+      <End Role="TBL_Candidates_Courses" EntitySet="TBL_Candidates_Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Candidates_Ministries_TBL_CandidatesInfo" Association="Self.FK_TBL_Candidates_Ministries_TBL_CandidatesInfo">
+      <End Role="TBL_CandidatesInfo" EntitySet="TBL_CandidatesInfo" />
+      <End Role="TBL_Candidates_Courses" EntitySet="TBL_Candidates_Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Candidates_Ministries_TBL_SubMinistry" Association="Self.FK_TBL_Candidates_Ministries_TBL_SubMinistry">
+      <End Role="TBL_SubMinistry" EntitySet="TBL_SubMinistry" />
+      <End Role="TBL_Candidates_Courses" EntitySet="TBL_Candidates_Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_Candidates_TBL_FiscalYear" Association="Self.FK_TBL_Candidates_TBL_FiscalYear">
+      <End Role="TBL_FiscalYear" EntitySet="TBL_FiscalYear" />
+      <End Role="TBL_Candidates_Courses" EntitySet="TBL_Candidates_Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBL_SubMinistry_TBL_Ministries" Association="Self.FK_TBL_SubMinistry_TBL_Ministries">
+      <End Role="TBL_Ministries" EntitySet="TBL_Ministries" />
+      <End Role="TBL_SubMinistry" EntitySet="TBL_SubMinistry" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
