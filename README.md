@@ -11,9 +11,9 @@ Feature ID | Feature Name | Link
 
 Theme ID | Theme Name | Link
 --- | --- | ---
-1 | Light | [Go To Theme 1 Section](#theme-1)
-2 | Dark1 | [Go To Theme 2 Section](#theme-2)
-2 | Dark2 | [Go To Theme 3 Section](#theme-3)
+1 | Light | [Theme 1](#theme-1)
+2 | Dark1 | [Theme 2](#theme-2)
+2 | Dark2 | [Theme 3](#theme-3)
 
 ### Theme 1
 
@@ -35,8 +35,8 @@ Theme ID | Theme Name | Link
 
 ## Roles
 
-- If you are an Administrator User You Can Browse Pages that Normal User Can't Enter
-- Also You Can Add or Edit or Delete Data
+- Administrator User You Can Browse Pages that Normal User Can't Enter
+- Administrator User You Can Add or Edit or Delete Data
 - Normal User Can Only Access Certain Pages and View Data
 
 ### **Home with Privilege**
