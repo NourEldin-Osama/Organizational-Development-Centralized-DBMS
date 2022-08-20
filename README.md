@@ -5,6 +5,7 @@
 Feature ID | Feature Name | Link
 --- | --- | ---
 1 | Themes | [Go To Themes Section](#themes)
+1 | User Roles | [Go To Themes Section](#Roles)
 
 ## Themes
 
@@ -25,6 +26,8 @@ Feature ID | Feature Name | Link
 #### **Tables**
 
 ![Theme2_Tables](/Screencapture/screencapture-Theme2-Tables.png)
+
+### Roles
 
 #### **Home with Privilege**
 
